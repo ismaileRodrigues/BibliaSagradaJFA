@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom' // Importar Link
+import { Link } from 'react-router-dom'
 import novoTestamento from '../data/novoTestamento.json'
-import '../App.css'
+import './App.css'
 
 function NewTestament() {
   const [expandedBook, setExpandedBook] = useState(null)
@@ -72,7 +72,10 @@ function NewTestament() {
             {selectedBook.chapters
               .find((c) => c.chapter === expandedChapter)
               .verses.map((verse) => (
-                <li key={verse.verse}>{verse.text}</li>
+                <li key={verse.verse}>
+                  <span className="verse-number">{verse.verse}. </span>
+                  {verse.text}
+                </li>
               ))}
           </ul>
         </div>
