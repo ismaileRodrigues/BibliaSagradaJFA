@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom' // Importar Link
+import { Link } from 'react-router-dom'
 import velhoTestamento from '../data/velhoTestamento.json'
-import '../App.css'
+import './App.css'
 
 function OldTestament() {
   const [expandedBook, setExpandedBook] = useState(null)
@@ -72,7 +72,10 @@ function OldTestament() {
             {selectedBook.chapters
               .find((c) => c.chapter === expandedChapter)
               .verses.map((verse) => (
-                <li key={verse.verse}>{verse.text}</li>
+                <li key={verse.verse}>
+                  <span className="verse-number">{verse.verse}. </span>
+                  {verse.text}
+                </li>
               ))}
           </ul>
         </div>
