@@ -85,7 +85,23 @@ width:90vw;
   font-weight: bold; /* Destaca o número do versículo */
   margin-right: 5px; /* Espaço entre o número e o texto */
 }
+.verses-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  max-width: 800px;
+  color: black;
+}
 
+.verses-list li {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.verse-number {
+  font-weight: bold;
+  margin-right: 5px;
+}
 button {
   padding: 10px 20px;
   font-size: 1rem;
