@@ -16,7 +16,7 @@ function NewTestament() {
     setExpandedChapter(expandedChapter === chapterNr ? null : chapterNr)
   }
 
-  const selectedBook = novoTestamento.books.find((b) => b.nr === expandedBook)
+  const selectedBook = novo.books.find((b) => b.nr === expandedBook)
 
   return (
     <div className="app">
