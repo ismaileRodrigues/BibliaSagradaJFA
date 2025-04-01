@@ -68,16 +68,19 @@ function NewTestament() {
             Voltar aos capítulos
           </button>
           <h3>{selectedBook.chapters.find((c) => c.chapter === expandedChapter).name}</h3>
-          <ul className="verses-list">
-            {selectedBook.chapters
-              .find((c) => c.chapter === expandedChapter)
-              .verses.map((verse) => (
-                <li key={verse.verse}>
-                  <span className="verse-number">{verse.verse}. </span>
-                  {verse.text}
-                </li>
-              ))}
-          </ul>
+         <ul className="verses-list">
+  {selectedBook.chapters
+    .find((c) => c.chapter === expandedChapter)
+    .verses.map((verse) => {
+      console.log("Versículo:", verse);
+      return (
+        <li key={verse.verse}>
+          <span className="verse-number">{verse.verse}. </span>
+          {verse.text}
+        </li>
+      );
+    })}
+</ul>
         </div>
       )}
     </div>
