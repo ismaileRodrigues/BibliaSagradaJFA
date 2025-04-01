@@ -1,22 +1,38 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import novoTestamento from '../data/novoTestamento.json'
-import './App.css'
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import './App.css';
 
 function NewTestament() {
-  const [expandedBook, setExpandedBook] = useState(null)
-  const [expandedChapter, setExpandedChapter] = useState(null)
+  const [expandedBook, setExpandedBook] = useState(null);
+  const [expandedChapter, setExpandedChapter] = useState(null);
+  const [novoTestamento, setNovoTestamento] = useState(null);
+
+  useEffect(() => {
+    fetch('/src/data/novoTestamento.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => setNovoTestamento(data))
+      .catch(error => console.error('Error fetching the JSON:', error));
+  }, []);
+
+  if (!novoTestamento) {
+    return <div>Loading...</div>;
+  }
 
   const toggleBook = (bookNr) => {
-    setExpandedBook(expandedBook === bookNr ? null : bookNr)
-    setExpandedChapter(null)
-  }
+    setExpandedBook(expandedBook === bookNr ? null : bookNr);
+    setExpandedChapter(null);
+  };
 
   const toggleChapter = (chapterNr) => {
-    setExpandedChapter(expandedChapter === chapterNr ? null : chapterNr)
-  }
+    setExpandedChapter(expandedChapter === chapterNr ? null : chapterNr);
+  };
 
-  const selectedBook = novoTestamento.books.find((b) => b.nr === expandedBook)
+  const selectedBook = novoTestamento.books.find((b) => b.nr === expandedBook);
 
   return (
     <div className="app">
@@ -68,23 +84,20 @@ function NewTestament() {
             Voltar aos capítulos
           </button>
           <h3>{selectedBook.chapters.find((c) => c.chapter === expandedChapter).name}</h3>
-         <ul className="verses-list">
-  {selectedBook.chapters
-    .find((c) => c.chapter === expandedChapter)
-    .verses.map((verse) => {
-      console.log("Versículo:", verse);
-      return (
-        <li key={verse.verse}>
-          <span className="verse-number">{verse.verse}. </span>
-          {verse.text}
-        </li>
-      );
-    })}
-</ul>
+          <ul className="verses-list">
+            {selectedBook.chapters
+              .find((c) => c.chapter === expandedChapter)
+              .verses.map((verse) => (
+                <li key={verse.verse}>
+                  <span className="verse-number">{verse.verse}. </span>
+                  {verse.text}
+                </li>
+              ))}
+          </ul>
         </div>
       )}
     </div>
-  )
+  );
 }
 
-export default NewTestament
+export default NewTestament;
