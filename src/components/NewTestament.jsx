@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import novoTestamento from '../data/novoTestamento.json'
+import novoTestamento from '../data/novo.json'
 import './App.css'
 
 function NewTestament() {
