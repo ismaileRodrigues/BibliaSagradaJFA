@@ -27,7 +27,7 @@ function NewTestament() {
             <button>Voltar à página inicial</button>
           </Link>
           <div className="book-gallery">
-            {novoTestamento.books.map((book) => (
+            {novo.books.map((book) => (
               <div
                 key={book.nr}
                 className="book-card"
