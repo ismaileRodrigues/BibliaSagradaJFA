@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import novo from '../data/novo.json'
+import novoTestament from '../data/novoTestament.json'
 import './App.css'
 
 function NewTestament() {
@@ -16,7 +16,7 @@ function NewTestament() {
     setExpandedChapter(expandedChapter === chapterNr ? null : chapterNr)
   }
 
-  const selectedBook = novo.books.find((b) => b.nr === expandedBook)
+  const selectedBook = novoTestament.books.find((b) => b.nr === expandedBook)
 
   return (
     <div className="app">
@@ -27,7 +27,7 @@ function NewTestament() {
             <button>Voltar à página inicial</button>
           </Link>
           <div className="book-gallery">
-            {novo.books.map((book) => (
+            {novoTestament.books.map((book) => (
               <div
                 key={book.nr}
                 className="book-card"
