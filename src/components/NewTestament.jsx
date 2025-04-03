@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import novoTestament from '../data/novoTestament.json'
+import novoTestamento from '../data/novoTestamento.json'
 import './App.css'
 
 function NewTestament() {
@@ -16,7 +16,7 @@ function NewTestament() {
     setExpandedChapter(expandedChapter === chapterNr ? null : chapterNr)
   }
 
-  const selectedBook = novoTestament.books.find((b) => b.nr === expandedBook)
+  const selectedBook = novoTestamento.books.find((b) => b.nr === expandedBook)
 
   return (
     <div className="app">
