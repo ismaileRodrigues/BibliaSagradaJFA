@@ -68,7 +68,7 @@ function OldTestament() {
             onClick={() => toggleChapter(null)}
             style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px' }}
           >
-            <FaHome /> Voltar aos capítulos
+            <FaHome />
           </button>
           <h3>{selectedBook.chapters.find((c) => c.chapter === expandedChapter).name}</h3>
           <div className="navigation-buttons-fixed">
@@ -76,13 +76,13 @@ function OldTestament() {
               onClick={() => setExpandedChapter(expandedChapter - 1)}
               disabled={expandedChapter === 1}
             >
-              ⬅ Capítulo Anterior
+              ⬅ 
             </button>
             <button
               onClick={() => setExpandedChapter(expandedChapter + 1)}
               disabled={expandedChapter === selectedBook.chapters.length}
             >
-              Próximo Capítulo ➡
+             ➡
             </button>
           </div>
           <ul className="verses-list">
