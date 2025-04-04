@@ -47,7 +47,7 @@ function OldTestament() {
             onClick={() => toggleBook(null)}
             style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px' }}
           >
-            <FaHome /> Voltar aos livros
+            <FaHome />
           </button>
           <h2>{selectedBook.name}</h2>
           <div className="chapter-gallery">
