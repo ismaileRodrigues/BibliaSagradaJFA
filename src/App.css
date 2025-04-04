@@ -1,31 +1,32 @@
 .app {
   min-height: 100vh;
   width: 90vw;
+width:90vw;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza horizontalmente */
+  align-items: center;
   background-color: #f5f5f5;
-  padding: 40px; /* Aumentei o padding para mais espaço */
+  padding: 40px;
   text-align: center;
   color: black;
 }
 
 .book-gallery-container {
   width: 100%;
-  /* max-width: 1400px; Aumentei a largura máxima para telas grandes */
+  max-width: 1400px;
 }
 
 .book-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Aumentei o tamanho mínimo dos cards */
-  gap: 30px; /* Aumentei o espaçamento entre os cards */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 30px;
   width: 100%;
   margin-top: 20px;
 }
 
 .book-card {
   background-color: #fff;
-  padding: 20px; /* Mais espaço interno */
+  padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -38,13 +39,13 @@
 
 .book-content {
   width: 100%;
-  max-width: 1400px; /* Aumentei para combinar com a galeria de livros */
-  text-align: center; /* Centraliza o texto */
+  max-width: 1400px;
+  text-align: center;
 }
 
 .chapter-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Mesma largura dos livros */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 30px;
   margin-top: 20px;
 }
@@ -64,70 +65,90 @@
 
 .chapter-content {
   width: 100%;
-  max-width: 1000px; /* Aumentei, mas mantive menor que as galerias para os versículos */
-  text-align: left; /* Mantive à esquerda para os versículos */
+  max-width: 1000px;
+  text-align: left;
 }
 
 .verses-list {
   list-style: none;
   padding: 0;
-  margin: 20px auto; /* Centraliza a lista de versículos */
-  max-width: 800px; /* Limita a largura dos versículos para legibilidade */
+  margin: 20px auto;
+  max-width: 800px;
   color: black;
 }
 
 .verses-list li {
   margin: 10px 0;
+  line-height: 1.5; /* Melhora a legibilidade */
 }
 
+.verse-number {
+  font-weight: bold; /* Destaca o número do versículo */
+  margin-right: 5px; /* Espaço entre o número e o texto */
+}
+.verses-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  max-width: 800px;
+  color: black;
+}
+
+.verses-list li {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.verse-number {
+  font-weight: bold;
+  margin-right: 5px;
+}
 button {
   padding: 10px 20px;
   font-size: 1rem;
-  background-color: #060216;
-  color: white;
+  display: flex;
+  margin-top: 15px;
+  background-color: #007bff !important;
+  color: white !important;
   border: none;
- display: flex;
- flex-direction: column;
- margin-top: 5%;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3 !important;
 }
 
 .back-button {
   text-decoration: none;
 }
 
-/* Ajustes para títulos e botões */
 h1, h2, h3 {
   margin: 20px 0;
 }
 
 .book-content h2,
 .chapter-content h3 {
-  text-align: center; /* Centraliza os títulos de livros e capítulos */
+  text-align: center;
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
   .book-gallery,
   .chapter-gallery {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Menor em tablets */
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 20px;
   }
   .app {
-    padding: 20px; /* Reduz o padding em telas menores */
+    padding: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .book-gallery,
   .chapter-gallery {
-    grid-template-columns: 1fr; /* Uma coluna em celulares */
+    grid-template-columns: 1fr;
     gap: 15px;
   }
   .app {

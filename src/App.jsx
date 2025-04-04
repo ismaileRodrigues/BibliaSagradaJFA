@@ -1,9 +1,8 @@
-import { Routes, Route, Link } from 'react-router-dom'
-import OldTestament from './components/OldTestament'
-import NewTestament from './components/NewTestament'
-
-
-import './App.css'
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import OldTestament from './components/OldTestament';
+import NewTestament from './components/NewTestament';
+import './App.css';
 
 function Home() {
   return (
@@ -15,17 +14,29 @@ function Home() {
         <Link to="/novo-testamento"><button>Novo Testamento</button></Link>
       </div>
     </div>
-  )
+  );
 }
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      document.title = 'Bíblia Sagrada - Home';
+    } else if (location.pathname === '/velho-testamento') {
+      document.title = 'Bíblia Sagrada - Velho Testamento';
+    } else if (location.pathname === '/novo-testamento') {
+      document.title = 'Bíblia Sagrada - Novo Testamento';
+    }
+  }, [location]);
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/velho-testamento" element={<OldTestament />} />
       <Route path="/novo-testamento" element={<NewTestament />} />
     </Routes>
-  )
+  );
 }
 
-export default App
+export default App;
