@@ -1,7 +1,9 @@
 import { Routes, Route, Link } from 'react-router-dom'
-import './App.css'
 import OldTestament from './components/OldTestament'
 import NewTestament from './components/NewTestament'
+
+
+import './App.css'
 
 function Home() {
   return (

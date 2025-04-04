@@ -1,0 +1,72 @@
+{
+    "document": {
+      "metadata": {
+        "translator": "Eliezer Lucena de Castro",
+        "translation_date": "Guarulhos, julho/agosto de 2012",
+        "original_language": "Italiano",
+        "adapted_language": "Português"
+      },
+      "pages": [
+        {
+          "page_number": 1,
+          "content": {
+            "text": [
+              "Luligi",
+              "Francesco Toppi",
+              "Francescon",
+              "Anteriguma del Rinvglio protecontale",
+              "Eungelico Italimo",
+              "Traduzido e adaptado por Eliezer Lucena de Castro"
+            ]
+          }
+        },
+        {
+          "page_number": 2,
+          "content": {
+            "text": [
+              "2",
+              "Traduzido e adaptado por Eliezer Lucena de Castro"
+            ]
+          }
+        },
+        {
+          "page_number": 3,
+          "content": {
+            "introduction": {
+              "text": [
+                "É com imenso prazer que realizo esta simples e humilde tradução da versão italiana da biografia de Luigi Francescon, que faz parte da série de livros biográficos dos pioneiros do Movimento pentecostal italiano que foram lançados na década de 1990 na Itália pelo departamento de imprensa da Assembleia de Deus da Itália, que têm como seus fundadores Giacomo Lombardi, Luigi Francescon, Lucia Mena dentre outros pioneiros do Movimento iniciado na cidade de Chicago nos Estados Unidos.",
+                "Agradeço a Deus por ter sido presenteado com este livro em italiano no ano de 2005, pelo Rabino Shaul Sharabi (Saulo Sharabi), que foi meu professor e mentor espiritual por algum tempo, e que despertou em mim o interesse em estudar as escrituras com mais afinco e também o interesse pela pesquisa bíblica em geral.",
+                "Estudei italiano no instituto italiano de cultura, um órgão do governo italiano para difusão da língua italiana no mundo, italiano porque gosto de musica erudita e opera, porém nunca imaginei que realizaria tal tarefa e empreendimento, ou seja, traduzir a biografia de Luigi Francescon, do qual infelizmente pouco material se tem em língua portuguesa.",
+                "Espero contribuir principalmente com crentes da CCB que na sua grande maioria não conhecem as origens do Movimento Pentecostal Italiano que chegou até nós através do ilustre Luigi Francescon, e hoje é uma das maiores Igrejas pentecostal do Brasil com milhões de fiéis."
+              ],
+              "author": "Eliezer Lucena de Castro",
+              "location": "Guarulhos",
+              "date": "julho/agosto de 2012"
+            },
+            "footer": "Traduzido e adaptado por Eliezer Lucena de Castro"
+          }
+        },
+        {
+          "page_number": 4,
+          "content": {
+            "title": "Luigi Francescon",
+            "subtitle": "Os pioneiros do avivamento Pentecostal italiano",
+            "text": [
+              "HOJE, A MAIS DE CEM ANOS DO INICIO DO AVIVAMENTO PENTECOSTAL ITALIANO, EM UM MUNDO AGORA TÃO DIFERENTE DAQUELE DE FRANCESCON, A MENSAGEM DE FIDELIDADE A TODO O EVANGELHO RESSOA AINDA IMPORTANTE (INFLUENTE) PARA RECORDARNOS QUE A PERPETUAÇÃO DESTE AVIVAMENTO EVANGELICO DEVE FUNDAMENTARSE SOBRE OS PRINCIPIOS QUE FRANCESCON MANTEVE ESTÁVEL ATÉ O FIM: \"A AUTORIDADE ABSOLUTA DA SAGRADA ESCRITURA, A GUIA INSUBSTITUÍVEL DO ESPÍRITO SANTO, A HUMILDADE NO MINISTÉRIO DADO POR DEUS, O DESINTERESSE PESSOAL E A FIRME VONTADE QUE QUALQUER ESTRUTURA NA IGREJA DO SENHOR DEVA PERMANECER APENAS COMO UMA FORMA DE SERVIÇO FRATERNO E NÃO SE TORNAR JAMAIS UMA ORGANIZAÇÃO DE PODER HUMANO.\""
+            ],
+            "footer": "Traduzido e adaptado por Eliezer Lucena de Castro"
+          }
+        },
+        {
+          "page_number": 5,
+          "content": {
+            "title": "Luigi Francescon (1866-1964)",
+            "subtitle": "LUIGI FRANCESCON E SUA ESPOSA ROSINA FRANCESCON",
+            "text": [],
+            "footer": "Traduzido e adaptado por Eliezer Lucena de Castro"
+          }
+        }
+        // ... (outras páginas seguem o mesmo padrão)
+      ]
+    }
+  }

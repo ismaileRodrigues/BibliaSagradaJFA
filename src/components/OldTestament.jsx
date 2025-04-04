@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom' // Importar Link
 import velhoTestamento from '../data/velhoTestamento.json'
+import { FaHome } from 'react-icons/fa'
 import '../App.css'
 
 function OldTestament() {
@@ -24,7 +25,7 @@ function OldTestament() {
       {expandedBook === null ? (
         <div className="book-gallery-container">
           <Link to="/" className="back-button">
-            <button>Voltar à página inicial</button>
+            <button><FaHome /></button>
           </Link>
           <div className="book-gallery">
             {velhoTestamento.books.map((book) => (
@@ -44,7 +45,7 @@ function OldTestament() {
             onClick={() => toggleBook(null)}
             style={{ marginBottom: '20px' }}
           >
-            Voltar aos livros
+           <FaHome />
           </button>
           <h2>{selectedBook.name}</h2>
           <div className="chapter-gallery">
@@ -65,16 +66,32 @@ function OldTestament() {
             onClick={() => toggleChapter(null)}
             style={{ marginBottom: '20px' }}
           >
-            Voltar aos capítulos
+            <FaHome />
           </button>
           <h3>{selectedBook.chapters.find((c) => c.chapter === expandedChapter).name}</h3>
+          <div className="navigation-buttons-fixed">
+    <button
+      onClick={() => setExpandedChapter(expandedChapter - 1)}
+      disabled={expandedChapter === 1} // Desabilita se for o primeiro capítulo
+    >
+      ⬅ 
+    </button>
+    <button
+      onClick={() => setExpandedChapter(expandedChapter + 1)}
+      disabled={expandedChapter === selectedBook.chapters.length} // Desabilita se for o último capítulo
+    >
+     ➡
+    </button>
+  </div>
           <ul className="verses-list">
-            {selectedBook.chapters
-              .find((c) => c.chapter === expandedChapter)
-              .verses.map((verse) => (
-                <li key={verse.verse}>{verse.text}</li>
-              ))}
-          </ul>
+  {selectedBook.chapters
+    .find((c) => c.chapter === expandedChapter)
+    .verses.map((verse) => (
+      <li key={verse.verse}>
+        <strong>{verse.verse}</strong> {verse.text}
+      </li>
+    ))}
+</ul>
         </div>
       )}
     </div>
