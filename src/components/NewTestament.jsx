@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaHome } from 'react-icons/fa'; // Importação do ícone FaHome
+import { FaHome } from 'react-icons/fa';
 import novo from '../data/novo.json';
 import '../App.css';
 
 function NewTestament() {
   const [expandedBook, setExpandedBook] = useState(null);
   const [expandedChapter, setExpandedChapter] = useState(null);
+  const [readBooks, setReadBooks] = useState({});
 
   const toggleBook = (bookNr) => {
     setExpandedBook(expandedBook === bookNr ? null : bookNr);
@@ -15,6 +16,13 @@ function NewTestament() {
 
   const toggleChapter = (chapterNr) => {
     setExpandedChapter(expandedChapter === chapterNr ? null : chapterNr);
+  };
+
+  const handleCheckboxChange = (bookNr) => {
+    setReadBooks({
+      ...readBooks,
+      [bookNr]: !readBooks[bookNr],
+    });
   };
 
   const selectedBook = novo.books.find((b) => b.nr === expandedBook);
@@ -31,12 +39,13 @@ function NewTestament() {
           </Link>
           <div className="book-gallery">
             {novo.books.map((book) => (
-              <div
-                key={book.nr}
-                className="book-card"
-                onClick={() => toggleBook(book.nr)}
-              >
-                {book.name}
+              <div key={book.nr} className="book-card">
+                <input
+                  type="checkbox"
+                  checked={readBooks[book.nr] || false}
+                  onChange={() => handleCheckboxChange(book.nr)}
+                />
+                <span onClick={() => toggleBook(book.nr)}>{book.name}</span>
               </div>
             ))}
           </div>
@@ -64,7 +73,6 @@ function NewTestament() {
         </div>
       ) : (
         <div className="chapter-content">
-          {/* Botão para voltar aos capítulos */}
           <button
             onClick={() => toggleChapter(null)}
             style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px' }}
@@ -72,23 +80,21 @@ function NewTestament() {
             <FaHome /> 
           </button>
 
-          {/* Botões de navegação fixos no topo */}
           <div className="navigation-buttons-fixed">
             <button
               onClick={() => setExpandedChapter(expandedChapter - 1)}
-              disabled={expandedChapter === 1} // Desabilita no primeiro capítulo
+              disabled={expandedChapter === 1}
             >
               ⬅ 
             </button>
             <button
               onClick={() => setExpandedChapter(expandedChapter + 1)}
-              disabled={expandedChapter === selectedBook.chapters.length} // Desabilita no último capítulo
+              disabled={expandedChapter === selectedBook.chapters.length}
             >
              ➡
             </button>
           </div>
 
-          {/* Conteúdo do capítulo */}
           <h3>{selectedBook.chapters.find((c) => c.chapter === expandedChapter).name}</h3>
           <ul className="verses-list">
             {selectedBook.chapters
