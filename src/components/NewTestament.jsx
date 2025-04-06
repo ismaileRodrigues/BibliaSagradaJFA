@@ -8,15 +8,21 @@ function NewTestament() {
   const [expandedBook, setExpandedBook] = useState(null);
   const [expandedChapter, setExpandedChapter] = useState(null);
   const [readBooks, setReadBooks] = useState(() => {
-    // Carrega o estado inicial dos livros lidos a partir do localStorage
     const saved = localStorage.getItem('readBooks');
+    return saved ? JSON.parse(saved) : {};
+  });
+  const [readChapters, setReadChapters] = useState(() => {
+    const saved = localStorage.getItem('readChapters');
     return saved ? JSON.parse(saved) : {};
   });
 
   useEffect(() => {
-    // Salva o estado dos livros lidos no localStorage sempre que ele for atualizado
     localStorage.setItem('readBooks', JSON.stringify(readBooks));
   }, [readBooks]);
+
+  useEffect(() => {
+    localStorage.setItem('readChapters', JSON.stringify(readChapters));
+  }, [readChapters]);
 
   const toggleBook = (bookNr) => {
     setExpandedBook(expandedBook === bookNr ? null : bookNr);
@@ -27,10 +33,17 @@ function NewTestament() {
     setExpandedChapter(expandedChapter === chapterNr ? null : chapterNr);
   };
 
-  const handleCheckboxChange = (bookNr) => {
+  const handleBookCheckboxChange = (bookNr) => {
     setReadBooks({
       ...readBooks,
       [bookNr]: !readBooks[bookNr],
+    });
+  };
+
+  const handleChapterCheckboxChange = (bookNr, chapterNr) => {
+    setReadChapters({
+      ...readChapters,
+      [`${bookNr}-${chapterNr}`]: !readChapters[`${bookNr}-${chapterNr}`],
     });
   };
 
@@ -52,7 +65,7 @@ function NewTestament() {
                 <input
                   type="checkbox"
                   checked={readBooks[book.nr] || false}
-                  onChange={() => handleCheckboxChange(book.nr)}
+                  onChange={() => handleBookCheckboxChange(book.nr)}
                 />
                 <span onClick={() => toggleBook(book.nr)}>{book.name}</span>
               </div>
@@ -70,12 +83,15 @@ function NewTestament() {
           <h2>{selectedBook.name}</h2>
           <div className="chapter-gallery">
             {selectedBook.chapters.map((chapter) => (
-              <div
-                key={chapter.chapter}
-                className="chapter-card"
-                onClick={() => toggleChapter(chapter.chapter)}
-              >
-                {chapter.name}
+              <div key={chapter.chapter} className="chapter-card">
+                <input
+                  type="checkbox"
+                  checked={readChapters[`${expandedBook}-${chapter.chapter}`] || false}
+                  onChange={() => handleChapterCheckboxChange(expandedBook, chapter.chapter)}
+                />
+                <span onClick={() => toggleChapter(chapter.chapter)}>
+                  {chapter.name}
+                </span>
               </div>
             ))}
           </div>
