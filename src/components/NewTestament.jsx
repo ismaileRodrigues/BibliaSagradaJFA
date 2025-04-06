@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
 import novo from '../data/novo.json';
@@ -7,7 +7,16 @@ import '../App.css';
 function NewTestament() {
   const [expandedBook, setExpandedBook] = useState(null);
   const [expandedChapter, setExpandedChapter] = useState(null);
-  const [readBooks, setReadBooks] = useState({});
+  const [readBooks, setReadBooks] = useState(() => {
+    // Carrega o estado inicial dos livros lidos a partir do localStorage
+    const saved = localStorage.getItem('readBooks');
+    return saved ? JSON.parse(saved) : {};
+  });
+
+  useEffect(() => {
+    // Salva o estado dos livros lidos no localStorage sempre que ele for atualizado
+    localStorage.setItem('readBooks', JSON.stringify(readBooks));
+  }, [readBooks]);
 
   const toggleBook = (bookNr) => {
     setExpandedBook(expandedBook === bookNr ? null : bookNr);
