@@ -191,3 +191,60 @@ h1, h2, h3 {
   cursor: not-allowed;
 }
 
+
+.book-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adicionei este gap */
+}
+
+.chapter-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adicionei este gap */
+}
+
+/* ... código existente ... */
+
+.book-card:hover {
+  transform: scale(1.05);
+}
+
+.chapter-card:hover {
+  transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .book-gallery,
+  .chapter-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 20px;
+  }
+  .app {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .book-gallery,
+  .chapter-gallery {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .app {
+    padding: 15px;
+  }
+}
