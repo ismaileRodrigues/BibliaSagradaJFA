@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { FaHome, FaBookmark } from 'react-icons/fa'; // Certifique-se de importar os ícones necessários
-import velhoTestamento from '../data/velhoTestamento.json';
-import '../App.css';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { FaHome, FaBookmark } from "react-icons/fa"; // Certifique-se de importar os ícones necessários
+import velhoTestamento from "../data/velhoTestamento.json";
+import "../App.css";
 
 function OldTestament() {
   const [expandedBook, setExpandedBook] = useState(null);
@@ -10,7 +10,7 @@ function OldTestament() {
 
   // Recuperar marcador do localStorage ao carregar o componente
   useEffect(() => {
-    const savedBookmark = JSON.parse(localStorage.getItem('bookmark'));
+    const savedBookmark = JSON.parse(localStorage.getItem("bookmark"));
     if (savedBookmark) {
       setExpandedBook(savedBookmark.book);
       setExpandedChapter(savedBookmark.chapter);
@@ -29,10 +29,10 @@ function OldTestament() {
   const saveBookmark = () => {
     if (expandedBook !== null && expandedChapter !== null) {
       localStorage.setItem(
-        'bookmark',
+        "bookmark",
         JSON.stringify({ book: expandedBook, chapter: expandedChapter })
       );
-      alert('Marcador salvo com sucesso!');
+      alert("Marcador salvo com sucesso!");
     }
   };
 
@@ -70,7 +70,12 @@ function OldTestament() {
         <div className="book-content">
           <button
             onClick={() => toggleBook(null)}
-            style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px' }}
+            style={{
+              marginBottom: "20px",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+            }}
           >
             <FaHome />
           </button>
@@ -78,13 +83,15 @@ function OldTestament() {
           <div className="chapter-gallery">
             {selectedBook.chapters.map((chapter) => {
               const isBookmarked =
-                expandedBook === JSON.parse(localStorage.getItem('bookmark'))?.book &&
-                chapter.chapter === JSON.parse(localStorage.getItem('bookmark'))?.chapter;
+                expandedBook ===
+                  JSON.parse(localStorage.getItem("bookmark"))?.book &&
+                chapter.chapter ===
+                  JSON.parse(localStorage.getItem("bookmark"))?.chapter;
 
               return (
                 <div
                   key={chapter.chapter}
-                  className={`chapter-card ${isBookmarked ? 'bookmarked' : ''}`}
+                  className={`chapter-card ${isBookmarked ? "bookmarked" : ""}`}
                   onClick={() => toggleChapter(chapter.chapter)}
                 >
                   {chapter.name}
@@ -97,7 +104,12 @@ function OldTestament() {
         <div className="chapter-content">
           <button
             onClick={() => toggleChapter(null)}
-            style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px' }}
+            style={{
+              marginBottom: "20px",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+            }}
           >
             <FaHome />
           </button>
@@ -106,27 +118,24 @@ function OldTestament() {
               onClick={() => setExpandedChapter(expandedChapter - 1)}
               disabled={expandedChapter === 1}
             >
-
               ⬅
             </button>
             <button className="save-bookmark-button" onClick={saveBookmark}>
               <FaBookmark />
-
-              ⬅ 
-
             </button>
             <button
               onClick={() => setExpandedChapter(expandedChapter + 1)}
               disabled={expandedChapter === selectedBook.chapters.length}
             >
-
               ➡
-
-             ➡
-
             </button>
           </div>
-          <h3>{selectedBook.chapters.find((c) => c.chapter === expandedChapter)?.name}</h3>
+          <h3>
+            {
+              selectedBook.chapters.find((c) => c.chapter === expandedChapter)
+                ?.name
+            }
+          </h3>
           <ul className="verses-list">
             {selectedBook.chapters
               .find((c) => c.chapter === expandedChapter)

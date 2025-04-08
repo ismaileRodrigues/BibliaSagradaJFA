@@ -1,7 +1,7 @@
 .app {
   min-height: 100vh;
   width: 90vw;
-width:90vw;
+  width: 90vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -79,13 +79,17 @@ width:90vw;
 
 .verses-list li {
   margin: 10px 0;
-  line-height: 1.5; /* Melhora a legibilidade */
+  line-height: 1.5;
+  /* Melhora a legibilidade */
 }
 
 .verse-number {
-  font-weight: bold; /* Destaca o número do versículo */
-  margin-right: 5px; /* Espaço entre o número e o texto */
+  font-weight: bold;
+  /* Destaca o número do versículo */
+  margin-right: 5px;
+  /* Espaço entre o número e o texto */
 }
+
 .verses-list {
   list-style: none;
   padding: 0;
@@ -103,6 +107,7 @@ width:90vw;
   font-weight: bold;
   margin-right: 5px;
 }
+
 button {
   padding: 10px 20px;
   font-size: 1rem;
@@ -124,7 +129,9 @@ button:hover {
   text-decoration: none;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin: 20px 0;
 }
 
@@ -135,22 +142,26 @@ h1, h2, h3 {
 
 /* Responsividade */
 @media (max-width: 768px) {
+
   .book-gallery,
   .chapter-gallery {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 20px;
   }
+
   .app {
     padding: 20px;
   }
 }
 
 @media (max-width: 480px) {
+
   .book-gallery,
   .chapter-gallery {
     grid-template-columns: 1fr;
     gap: 15px;
   }
+
   .app {
     padding: 15px;
   }
@@ -166,18 +177,23 @@ h1, h2, h3 {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  
+
 }
 
 .navigation-buttons-fixed {
-  position: sticky; /* Ou use position: fixed para fixar na janela */
-  top: 0; /* Fixa no topo */
-  background-color: white; /* Fundo branco para destacar */
-  z-index: 1000; /* Garante que fique acima de outros elementos */
+  position: sticky;
+  /* Ou use position: fixed para fixar na janela */
+  top: 0;
+  /* Fixa no topo */
+  background-color: white;
+  /* Fundo branco para destacar */
+  z-index: 1000;
+  /* Garante que fique acima de outros elementos */
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  border-bottom: 1px solid #ccc; /* Linha para separar do conteúdo */
+  border-bottom: 1px solid #ccc;
+  /* Linha para separar do conteúdo */
 }
 
 
