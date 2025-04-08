@@ -106,16 +106,24 @@ function OldTestament() {
               onClick={() => setExpandedChapter(expandedChapter - 1)}
               disabled={expandedChapter === 1}
             >
+
               ⬅
             </button>
             <button className="save-bookmark-button" onClick={saveBookmark}>
               <FaBookmark />
+
+              ⬅ 
+
             </button>
             <button
               onClick={() => setExpandedChapter(expandedChapter + 1)}
               disabled={expandedChapter === selectedBook.chapters.length}
             >
+
               ➡
+
+             ➡
+
             </button>
           </div>
           <h3>{selectedBook.chapters.find((c) => c.chapter === expandedChapter)?.name}</h3>

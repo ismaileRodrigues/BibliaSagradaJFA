@@ -1,21 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaHome, FaBookmark } from 'react-icons/fa'; // Certifique-se de importar os ícones necessários
+import { FaHome } from 'react-icons/fa'; // Importação do ícone FaHome
 import novo from '../data/novo.json';
 import '../App.css';
 
 function NewTestament() {
   const [expandedBook, setExpandedBook] = useState(null);
   const [expandedChapter, setExpandedChapter] = useState(null);
-
-  // Recuperar marcador do localStorage ao carregar o componente
-  useEffect(() => {
-    const savedBookmark = JSON.parse(localStorage.getItem('bookmark'));
-    if (savedBookmark) {
-      setExpandedBook(savedBookmark.book);
-      setExpandedChapter(savedBookmark.chapter);
-    }
-  }, []);
 
   const toggleBook = (bookNr) => {
     setExpandedBook(expandedBook === bookNr ? null : bookNr);
@@ -24,6 +15,20 @@ function NewTestament() {
 
   const toggleChapter = (chapterNr) => {
     setExpandedChapter(expandedChapter === chapterNr ? null : chapterNr);
+  };
+
+  const handleBookCheckboxChange = (bookNr) => {
+    setReadBooks({
+      ...readBooks,
+      [bookNr]: !readBooks[bookNr],
+    });
+  };
+
+  const handleChapterCheckboxChange = (bookNr, chapterNr) => {
+    setReadChapters({
+      ...readChapters,
+      [`${bookNr}-${chapterNr}`]: !readChapters[`${bookNr}-${chapterNr}`],
+    });
   };
 
   const saveBookmark = () => {
@@ -51,12 +56,13 @@ function NewTestament() {
           </Link>
           <div className="book-gallery">
             {novo.books.map((book) => (
-              <div
-                key={book.nr}
-                className="book-card"
-                onClick={() => toggleBook(book.nr)}
-              >
-                {book.name}
+              <div key={book.nr} className="book-card">
+                <input
+                  type="checkbox"
+                  checked={readBooks[book.nr] || false}
+                  onChange={() => handleBookCheckboxChange(book.nr)}
+                />
+                <span onClick={() => toggleBook(book.nr)}>{book.name}</span>
               </div>
             ))}
           </div>
@@ -76,21 +82,15 @@ function NewTestament() {
           </button>
           <h2>{selectedBook.name}</h2>
           <div className="chapter-gallery">
-            {selectedBook.chapters.map((chapter) => {
-              const isBookmarked =
-                expandedBook === JSON.parse(localStorage.getItem('bookmark'))?.book &&
-                chapter.chapter === JSON.parse(localStorage.getItem('bookmark'))?.chapter;
-
-              return (
-                <div
-                  key={chapter.chapter}
-                  className={`chapter-card ${isBookmarked ? 'bookmarked' : ''}`}
-                  onClick={() => toggleChapter(chapter.chapter)}
-                >
-                  {chapter.name}
-                </div>
-              );
-            })}
+            {selectedBook.chapters.map((chapter) => (
+              <div
+                key={chapter.chapter}
+                className="chapter-card"
+                onClick={() => toggleChapter(chapter.chapter)}
+              >
+                {chapter.name}
+              </div>
+            ))}
           </div>
         </div>
       ) : (
@@ -101,6 +101,8 @@ function NewTestament() {
           >
             <FaHome /> 
           </button>
+
+          {/* Botões de navegação fixos no topo */}
           <div className="navigation-buttons-fixed">
             <button
               onClick={() => setExpandedChapter(expandedChapter - 1)}
@@ -118,7 +120,9 @@ function NewTestament() {
               ➡
             </button>
           </div>
-          <h3>{selectedBook.chapters.find((c) => c.chapter === expandedChapter)?.name}</h3>
+
+          {/* Conteúdo do capítulo */}
+          <h3>{selectedBook.chapters.find((c) => c.chapter === expandedChapter).name}</h3>
           <ul className="verses-list">
             {selectedBook.chapters
               .find((c) => c.chapter === expandedChapter)
