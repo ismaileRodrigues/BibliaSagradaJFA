@@ -180,6 +180,7 @@ h1, h2, h3 {
   border-bottom: 1px solid #ccc; /* Linha para separar do conteúdo */
 }
 
+
 .navigation-buttons-fixed button {
   padding: 10px 20px;
   font-size: 16px;
@@ -191,3 +192,33 @@ h1, h2, h3 {
   cursor: not-allowed;
 }
 
+.chapter-card {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.chapter-card:hover {
+  background-color: #f0f0f0;
+}
+
+.chapter-card.bookmarked {
+  background-color: #007bff; /* Cor de destaque para o capítulo salvo */
+  color: white;
+  font-weight: bold;
+}
+
+.chapter-card.bookmarked:hover {
+  background-color: #0056b3; /* Cor de destaque para o capítulo salvo ao passar o mouse */
+}
+.save-bookmark-button{
+  margin-top:  '20px';
+  padding: '10px 20px';
+  background-color: '#007bff';
+  color: 'white';
+  border: 'none';
+  border-radius: '5px';
+  cursor: 'pointer';
+}
