@@ -81,24 +81,23 @@ function NewTestament() {
           </button>
           <h2>{selectedBook.name}</h2>
           <div className="chapter-gallery">
-            {selectedBook.chapters.map((chapter) => {
-              const isBookmarked =
-                expandedBook ===
-                  JSON.parse(localStorage.getItem("bookmark"))?.book &&
-                chapter.chapter ===
-                  JSON.parse(localStorage.getItem("bookmark"))?.chapter;
+  {selectedBook.chapters.map((chapter) => {
+    // Verifica se o capítulo atual é o capítulo salvo no marcador
+    const isBookmarked =
+      expandedBook === JSON.parse(localStorage.getItem('bookmark'))?.book &&
+      chapter.chapter === JSON.parse(localStorage.getItem('bookmark'))?.chapter;
 
-              return (
-                <div
-                  key={chapter.chapter}
-                  className={`chapter-card ${isBookmarked ? "bookmarked" : ""}`}
-                  onClick={() => toggleChapter(chapter.chapter)}
-                >
-                  {chapter.name}
-                </div>
-              );
-            })}
-          </div>
+    return (
+      <div
+        key={chapter.chapter}
+        className={`chapter-card ${isBookmarked ? 'bookmarked' : ''}`} // Adiciona a classe 'bookmarked' se for o capítulo salvo
+        onClick={() => toggleChapter(chapter.chapter)}
+      >
+        {chapter.name}
+      </div>
+    );
+  })}
+</div>
         </div>
       ) : (
         <div className="chapter-content">

@@ -129,15 +129,24 @@ button:hover {
   text-decoration: none;
 }
 
-h1,
+
 h2,
 h3 {
   margin: 20px 0;
+  font-size: 2rem;
+  color: #333;
 }
 
 .book-content h2,
 .chapter-content h3 {
   text-align: center;
+  font-size: 1rem;
+
+}
+
+.app h1 {
+  font-size: 1rem;
+  color: #333;
 }
 
 /* Responsividade */
@@ -206,4 +215,23 @@ h3 {
 .navigation-buttons-fixed button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+
+.chapter-card {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.chapter-card:hover {
+  background-color: #f0f0f0;
+}
+
+.chapter-card.bookmarked {
+  background-color: #007bff; /* Cor de destaque para o capítulo salvo */
+  color: white;
+  font-weight: bold;
 }
