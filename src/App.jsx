@@ -28,6 +28,7 @@ function App() {
     } else if (location.pathname === '/novo-testamento') {
       document.title = 'Bíblia Sagrada - Novo Testamento';
     }
+
   }, [location]);
 
   return (

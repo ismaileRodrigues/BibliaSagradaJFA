@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaHome, FaBookmark } from "react-icons/fa";
-import novo from "../data/novo.json";
+import novoTestamento from "../data/novo.json";
 import "../App.css";
 
 function NewTestament() {
@@ -10,10 +10,10 @@ function NewTestament() {
 
   // Recuperar marcador do localStorage ao carregar o componente
   useEffect(() => {
-    const savedBookmark = JSON.parse(localStorage.getItem("newTestamentBookmark"));
+    const savedBookmark = JSON.parse(localStorage.getItem("oldTestamentBookmark"));
     if (savedBookmark) {
-      // Verifica se o livro salvo existe em novo.books
-      const bookExists = novo.books.some(
+      // Verifica se o livro salvo existe em velhoTestamento.books
+      const bookExists = novoTestamento.books.some(
         (book) => book.nr === savedBookmark.book
       );
       if (bookExists) {
@@ -21,7 +21,7 @@ function NewTestament() {
         setExpandedChapter(savedBookmark.chapter);
       } else {
         // Se o livro não existe, limpa o marcador inválido
-        localStorage.removeItem("newTestamentBookmark");
+        localStorage.removeItem("oldTestamentBookmark");
       }
     }
   }, []);
@@ -38,7 +38,7 @@ function NewTestament() {
   const saveBookmark = () => {
     if (expandedBook !== null && expandedChapter !== null) {
       localStorage.setItem(
-        "newTestamentBookmark",
+        "oldTestamentBookmark",
         JSON.stringify({ book: expandedBook, chapter: expandedChapter })
       );
       alert("Marcador salvo com sucesso!");
@@ -46,7 +46,7 @@ function NewTestament() {
   };
 
   // Verifica se o livro selecionado existe
-  const selectedBook = novo.books.find((b) => b.nr === expandedBook);
+  const selectedBook = novoTestamento.books.find((b) => b.nr === expandedBook);
 
   return (
     <div className="app">
@@ -59,7 +59,7 @@ function NewTestament() {
             </button>
           </Link>
           <div className="book-gallery">
-            {novo.books.map((book) => (
+            {novoTestamento.books.map((book) => (
               <div
                 key={book.nr}
                 className="book-card"
@@ -93,8 +93,8 @@ function NewTestament() {
             {selectedBook.chapters.map((chapter) => {
               // Verifica se o capítulo atual é o capítulo salvo no marcador
               const isBookmarked =
-                expandedBook === JSON.parse(localStorage.getItem("newTestamentBookmark"))?.book &&
-                chapter.chapter === JSON.parse(localStorage.getItem("newTestamentBookmark"))?.chapter;
+                expandedBook === JSON.parse(localStorage.getItem("oldTestamentBookmark"))?.book &&
+                chapter.chapter === JSON.parse(localStorage.getItem("oldTestamentBookmark"))?.chapter;
 
               return (
                 <div
